@@ -147,4 +147,4 @@ Troubleshooting
 - Large onefile exe sizes are normal due to native libs
 
 License
-- MIT License. See LICENSE for details.
+- GNU Affero General Public License v3.0 (AGPL-3.0). See LICENSE for details.
