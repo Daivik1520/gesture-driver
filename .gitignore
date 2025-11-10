@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# macOS
+.DS_Store
+
+# Virtual environments
+.venv/
+.venv311/
+
+# PyInstaller output
+/dist/
+/build/
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# Keep spec file tracked
+!build/pyinstaller_win.spec
