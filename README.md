@@ -1,9 +1,6 @@
 # Gesture Driver
 
 <br>
-<p align="center">
-  <img src="assets/icon.png" alt="Gesture Driver Logo" height="92"/>
-</p>
 
 <p align="center">
   <b>Professional, modular hand‑gesture steering for games and interactive experiences.</b><br>
