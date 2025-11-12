@@ -157,7 +157,7 @@ Open an [issue](https://github.com/Daivik1520/gesture-driver/issues) or create a
 ## 📬 Contact
 
 **Author:** Daivik Reddy  
-- 🌐 [LinkedIn](https://www.linkedin.com/in/daivik1520/)
+- 🌐 [LinkedIn](https://www.linkedin.com/in/daivik-reddy-60a876311/)
 - ✉️ Email: daivik1520@gmail.com  
 - 🐙 [GitHub](https://github.com/Daivik1520)
 
