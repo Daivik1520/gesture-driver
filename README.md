@@ -1,150 +1,169 @@
-🎮 Gesture Driver
+# Gesture Driver
 
-Professional, modular hand‑gesture steering for games and experiences — powered by MediaPipe and OpenCV. Control forward, braking, reversing, and steering using your hands, with a futuristic multi‑theme HUD and smooth tilt‑based wheel visualization.
+<br>
+<p align="center">
+  <img src="assets/icon.png" alt="Gesture Driver Logo" height="92"/>
+</p>
 
-🚗 Features
+<p align="center">
+  <b>Professional, modular hand‑gesture steering for games and interactive experiences.</b><br>
+  🚗 Powered by <a href="https://mediapipe.dev/">MediaPipe</a> & <a href="https://opencv.org/">OpenCV</a>. Control forward, braking, reversing, and steering using your hands—with a futuristic multi‑theme HUD and real‑time visualization.
+</p>
+<br>
 
-🖐️ Real-time hand tracking using MediaPipe
+<p align="center">
+  <a href="https://github.com/Daivik1520/gesture-driver/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/Daivik1520/gesture-driver/build.yml?branch=main&label=build&logo=github" alt="Build Status"></a>
+  <a href="https://github.com/Daivik1520/gesture-driver/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Daivik1520/gesture-driver?logo=open-source-initiative" alt="License"></a>
+  <a href="https://github.com/Daivik1520/gesture-driver"><img src="https://img.shields.io/github/stars/Daivik1520/gesture-driver?logo=github" alt="Stars"></a>
+  <a href="https://github.com/Daivik1520/gesture-driver/issues"><img src="https://img.shields.io/github/issues/Daivik1520/gesture-driver?logo=github" alt="Open Issues"></a>
+  <img src="https://img.shields.io/badge/python-3.11-blue.svg?logo=python" alt="Python 3.11">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-success?logo=windows" alt="Platform">
+</p>
 
-🎮 Keyboard control simulation for W, A, S, D
+---
 
-🧭 Two modes (modular design):
+## 📑 Table of Contents
 
-- Modular App (recommended): main.py → Clean UI, themed overlay, continuous tilt‑based steering
-- Legacy scripts: steering.py (pynput), key_input.py (Windows ctypes)
+- [Features](#features)
+- [Installation](#installation)
+  - [Windows](#windows)
+  - [macOS / Linux](#macos--linux)
+- [Usage](#usage)
+- [Build for Windows (.exe)](#build-for-windows-exe)
+- [Customization](#customization)
+- [Configuration](#configuration)
+- [Troubleshooting](#troubleshooting)
+- [Project Structure](#project-structure)
+- [License](#license)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
-🪟 Works with Windows key events or via pynput keyboard
+---
 
-📷 Clean, themed UI overlay using OpenCV (Neo Green, Ocean Blue, Sunset Orange, Cyber Purple, HOLO FLUX, Dark themes)
+## 🚗 Features
 
-⚙️ Tech Used
+- **🖐️ Real-time Hand Tracking:** Powered by [MediaPipe](https://mediapipe.dev/)
+- **🎮 Keyboard Control Simulation:** Virtual W, A, S, D controls for driving games
+- **🧭 Modular Modes:**
+  - **App Mode:** Continuous tilt‑based steering; modern themed UI overlay
+  - **Legacy Scripts:** For classic steering methods (pynput/ctypes)
+- **📷 Themed Overlays:** Futuristic HUD, switchable neon & dark color themes
+- **🪟 Works Cross-Platform:** Simulates Windows key events or uses `pynput`
+- **⚙️ Tech Stack:** Python 3.11, OpenCV, MediaPipe, ctypes, pynput, modular codebase
 
-Python 3.x
+---
 
-OpenCV – camera input and visualization
+## ⚡️ Quick Start
 
-MediaPipe – hand landmark detection
+### Windows
 
-ctypes / pynput – virtual keyboard input
 
-📦 Modular Architecture
+🔒 Grant permissions if prompted (Accessibility, Input Monitoring, Camera).
 
-- gesture_racer/config.py — central configuration
-- gesture_racer/camera.py — camera abstraction
-- gesture_racer/hand_tracking.py — MediaPipe wrapper
-- gesture_racer/gestures.py — pure gesture decision logic
-- gesture_racer/input_controller.py — cross‑platform key input
-- gesture_racer/ui/theme.py — swappable color themes
-- gesture_racer/ui/overlay.py — advanced HUD rendering
+---
 
-🧪 Build a Windows .exe with PyInstaller
+## ▶️ Usage
 
-PyInstaller builds are OS-specific. To create a Windows .exe, run the build on a Windows machine:
+- **Controls:**
+  - `q`: Quit app
+  - `t`: Cycle themes
+  - `d`: Cycle dark themes
+  - `- / =`: Adjust steering sensitivity
+  - `[ / ]`: Adjust steering deadband
+  - `h`: Toggle debug chips
+  - `r`: Reset tuning
 
-1) Install Python 3.11 for Windows, then open Command Prompt in the project folder.
-2) Run the build script:
+- **Before You Start:**
+  - Ensure the target game window is focused to receive simulated inputs.
+  - On macOS, enable Python/Terminal in Accessibility, Input Monitoring, Camera.
 
-   scripts\build_windows_pyinstaller.bat
+---
 
-This will:
-- Create a virtual environment
-- Install dependencies and PyInstaller
-- Build using build\pyinstaller_win.spec
+## 🛠️ Build for Windows (.exe)
 
-Output: dist\GestureRacer.exe
+PyInstaller builds are OS-specific. To create a Windows executable:
 
-If you prefer a direct command instead of the spec:
+1. Install Python 3.11 on Windows
+2. Run from **Command Prompt** in the project directory:
 
-   pyinstaller --onefile --name GestureRacer --collect-all mediapipe --collect-all cv2 --collect-all jaxlib --collect-all jax --collect-all numpy main.py
 
-Note: The onefile exe can be large due to MediaPipe and its native libraries. Using the spec file ensures required data and submodules are bundled.
+#### _What it does:_
+- Sets up a new venv
+- Installs dependencies and PyInstaller
+- Builds using `build/pyinstaller_win.spec`
+- Output appears in `dist/GestureRacer.exe`
 
-📷 Custom App Icon
+**One-liner PyInstaller alternative**:
 
-- Save your icon PNG (like the one you shared) to assets/icon.png.
-- The build script converts it into assets/app.ico automatically using Pillow and embeds it into the exe.
-- Recommended: square 256x256 PNG with transparent background.
 
-Quick Start (macOS/Linux)
-1) Create a Python 3.11 virtual environment and install dependencies:
-   python3.11 -m venv .venv311
-   .venv311/bin/python -m pip install -r requirements.txt
-2) Run the app:
-   .venv311/bin/python main.py
-3) Give permissions if prompted (macOS): Accessibility, Input Monitoring, Camera.
+> _Note: The executable may be large because of MediaPipe and native libraries. Using the provided `.spec` is safest._
 
-Quick Start (Windows)
-- Install Python 3.11, then:
-  py -3.11 -m venv .venv311
-  .venv311\Scripts\python -m pip install -r requirements.txt
-  .venv311\Scripts\python main.py
-- Legacy script options:
-  - steering.py (pynput)
-  - key_input.py (Windows ctypes)
+#### Custom App Icon
 
-🛠️ Troubleshooting on Windows
+- Put your 256x256 PNG (transparent) as `assets/icon.png`.
+- The build script auto-generates & embeds an `assets/app.ico`.
 
-- Webcam permissions: Windows will prompt the first time the app accesses the camera.
-- Keyboard injection: For games to receive key events, ensure the game window is focused. Some anti-cheat systems may block simulated input.
-- Antivirus flags: Large onefile executables may be scanned. Add an exclusion if needed.
-- If packing fails, try: pyinstaller --clean --noconfirm build\pyinstaller_win.spec
+---
 
-🚀 Run (recommended)
+## 🎨 Customization
 
-1) Create and use Python 3.11 virtual environment
+**Themes:**  
+Choose from Neo Green, Ocean Blue, Sunset Orange, Cyber Purple, HOLO FLUX, Dark Stealth, Dark Crimson, Dark Cyan.
 
-   python3.11 -m venv .venv311
-   .venv311/bin/python -m pip install -r requirements.txt
+The HUD supports:
+- Neon palettes and deep dark modes
+- Rotating “wheel” with tick ring
+- Parallax grids, scanlines, holographic effects
 
-2) Start the app
+---
 
-   .venv311/bin/python main.py
+## ⚙️ Configuration
 
-3) macOS permissions (to send key presses):
+Adjust `gesture_racer/config.py` for:
+- Camera: `camera_index`, `frame_flip`
+- ML: detection & tracking confidence
+- Driving: `brake_distance_px`, `turn_tilt_threshold`
+- Steering: `steering_gain`, `max_steering_deg`, `turn_deadband_deg`, `smoothing_alpha_angle`
+- UI: `ui_intensity`, particles, trails, grids, hex, blur
+- Handles: Pinch threshold, radius, max length
+- Theme: `theme_name`
 
-   - System Settings → Privacy & Security → Accessibility → enable Terminal/Python
-   - System Settings → Privacy & Security → Input Monitoring → enable if prompted
-   - System Settings → Privacy & Security → Camera → enable Terminal/Python
+---
 
-Controls
-- q: quit
-- t: cycle all themes
-- d: cycle dark themes
-- - / = or +: decrease/increase steering sensitivity (gain)
-- [ / ]: widen/narrow deadband around center
-- h: toggle debug chips
-- r: reset tuning
 
-Configuration (gesture_racer/config.py)
-- camera_index, frame_flip
-- detection/tracking confidence
-- brake_distance_px, turn_tilt_threshold
-- steering_gain, max_steering_deg, turn_deadband_deg
-- smoothing_alpha_angle
-- ui_intensity, particle_max, trail_length, grid_alpha, scanlines_alpha, hex_alpha
-- background_blur_enabled, background_blur_ksize, background_blur_sigma
-- handle_enabled, grip_threshold_px, handle_radius_px, handle_max_length_px
-- theme_name: neo_green | ocean_blue | sunset_orange | cyber_purple | holo_flux | dark_stealth | dark_crimson | dark_cyan
+---
 
-Themes & UI
-- Multi‑color neon palettes and dark modes
-- Wheel with rotating tick ring, pulsing holographic ring
-- Hex grid with parallax, scanlines, segment bar
-- Wrist handles that respond to pinch and tilt
+## 🛡️ Troubleshooting
 
-Project Structure (top‑level)
-- gesture_racer/ … modular package
-- main.py … modern app entry
-- steering.py, key_input.py … legacy demos
-- assets/ … icon and version metadata
-- scripts/ … build helpers
-- build/ … PyInstaller spec
-- README.md, LICENSE, requirements.txt
+- **Webcam**: Allow access the first time when prompted.
+- **Keyboard Input**: Focus the game window.
+- **Antivirus**: Large executables may be flagged. Add exclusions as needed.
+- **Build Issues**: Try `pyinstaller --clean --noconfirm build\pyinstaller_win.spec`
+- **macOS**: Grant permissions (Accessibility, Input Monitoring, Camera).
 
-Troubleshooting
-- Ensure the target game window is focused to receive inputs
-- macOS: grant Accessibility, Input Monitoring, Camera
-- Large onefile exe sizes are normal due to native libs
+---
 
-License
-- GNU Affero General Public License v3.0 (AGPL-3.0). See LICENSE for details.
+## 📄 License
+
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+See [`LICENSE`](LICENSE) for details.
+
+---
+
+## 🤝 Contributing
+
+Pull requests, bug reports, and feature suggestions are welcome!  
+Open an [issue](https://github.com/Daivik1520/gesture-driver/issues) or create a [pull request](https://github.com/Daivik1520/gesture-driver/pulls).
+
+---
+
+## 📬 Contact
+
+**Author:** Daivik Reddy  
+- 🌐 [LinkedIn](https://www.linkedin.com/in/daivik1520/)
+- ✉️ Email: daivik1520@gmail.com  
+- 🐙 [GitHub](https://github.com/Daivik1520)
+
+---
+
+> _Gesture Driver: Hands-on control for the next generation of gaming and interactive experiences!_
